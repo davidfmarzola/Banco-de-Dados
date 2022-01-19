@@ -38,6 +38,12 @@ WHERE movie_id IS NULL
 -- Projetar primeiro nome e o último nome dos atores que não atuaram em pelo menos dois filmes;
 SELECT first_name,last_name
 
-FROM actors left join (select actor_id, COUNT(*) AS filmesNum from roles group by actor_id) as B on id = actor_id
+FROM actors 
+
+left join (select actor_id, 
+           COUNT(*) AS filmesNum from roles 
+           group by actor_id) 
+
+as B on id = actor_id
 
 WHERE filmesNum <= 2
